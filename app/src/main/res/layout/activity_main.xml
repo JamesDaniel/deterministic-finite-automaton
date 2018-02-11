@@ -24,9 +24,17 @@
         android:layout_below="@+id/coin"/>
 
     <ImageView
+        android:id="@+id/turnstile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/turnstile"
         android:layout_below="@id/outputTxt"/>
+
+    <ImageView
+        android:id="@+id/github"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/github"
+        android:layout_below="@+id/turnstile"/>
 
 </RelativeLayout>
