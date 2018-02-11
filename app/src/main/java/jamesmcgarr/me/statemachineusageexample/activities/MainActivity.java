@@ -1,9 +1,12 @@
 package jamesmcgarr.me.statemachineusageexample.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.jeasy.states.api.FiniteStateMachine;
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button coinBtn;
     private Button pushBtn;
     private TextView outputTxt;
+    private ImageView gitHub;
 
     private FiniteStateMachine turnstileStateMachine;
 
@@ -38,9 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         coinBtn = findViewById(R.id.coin);
         pushBtn = findViewById(R.id.push);
         outputTxt = findViewById(R.id.outputTxt);
+        gitHub = findViewById(R.id.github);
 
         coinBtn.setOnClickListener(this);
         pushBtn.setOnClickListener(this);
+        gitHub.setOnClickListener(this);
 
         State locked = new State("locked");
         State unlocked = new State("unlocked");
@@ -103,6 +109,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.coin:
                 turnstileStateMachine.fire(new CoinEvent());
                 break;
+            case R.id.github:
+                launchGitHub();
         }
+    }
+
+    private void launchGitHub() {
+        Uri uri = Uri.parse("https://github.com/JamesDaniel/deterministic-finite-automaton");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 }
